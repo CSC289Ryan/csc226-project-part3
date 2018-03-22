@@ -4,9 +4,21 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="mainPlaceholder" runat="server">
     <asp:Label ID="Label1" runat="server" Text="Select a customer:"></asp:Label>
     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1"
-        DataTextField="Name" DataValueField="CustomerID"></asp:DropDownList>
-    <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource2">
+        DataTextField="Name" DataValueField="CustomerID" AutoPostBack="true"></asp:DropDownList>
+
+    <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource2"
+        DataKeyField="CustomerID" CssClass="table table-bordered table-condensed table-striped">
+        <HeaderTemplate>
+            <span class="col-xs-3">Product/Incident</span>
+            <span class="col-xs-3">Tech Name</span>
+            <span class="col-xs-3">Opened</span>
+            <span class="col-xs-3">Closed</span>
+        </HeaderTemplate>
+        <ItemTemplate>
+            <asp:Label ID="Label2" runat="server" Text='TEST'></asp:Label>
+        </ItemTemplate>
     </asp:DataList>
+
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
         ConnectionString='<%$ ConnectionStrings:ConnectionString %>'
         SelectCommand="SELECT [CustomerID], [Name] FROM [Customers] ORDER BY [Name]"></asp:SqlDataSource>
