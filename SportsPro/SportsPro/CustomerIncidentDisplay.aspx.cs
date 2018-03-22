@@ -10,5 +10,14 @@ namespace SportsPro {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+        protected void DataList1_PreRender(object sender, EventArgs e) {
+            DataList1.DataBind();
+            if (DataList1.Items.Count == 0) {
+                lblNoData.Visible = true;
+            } else {
+                lblNoData.Visible = false;
+            }
+        }
     }
 }
