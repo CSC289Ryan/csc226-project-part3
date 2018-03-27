@@ -73,7 +73,8 @@
                         </asp:CommandField>
                     </Columns>
                 </asp:GridView>
-                <asp:Label ID="lblUpdateDeleteError" runat="server" EnableViewState="false"></asp:Label>
+                <asp:Label ID="lblUpdateDeleteError" runat="server" EnableViewState="false"
+                    CssClass="text-danger"></asp:Label>
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server"
                     ValidationGroup="Edit" CssClass="text-danger" HeaderText="Please correct the following errors:"/>
             </div>
@@ -93,11 +94,10 @@
                     <asp:TextBox ID="txtProductCode" runat="server"
                         CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-xs-1">
+                <div class="col-xs-6">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                         ErrorMessage="Product code is required" ControlToValidate="txtProductCode"
-                        Text="*" CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
-
+                        CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="form-group">
@@ -109,10 +109,10 @@
                     <asp:TextBox ID="txtName" runat="server"
                         CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-xs-1">
+                <div class="col-xs-6">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
                         ErrorMessage="Name is required" ControlToValidate="txtName"
-                        Text="*" CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
+                        CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="form-group">
@@ -124,10 +124,10 @@
                     <asp:TextBox ID="txtVersion" runat="server"
                         CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-xs-1">
+                <div class="col-xs-6">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
                         ErrorMessage="Version is required" ControlToValidate="txtVersion"
-                        Text="*" CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
+                        CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="form-group">
@@ -139,14 +139,14 @@
                     <asp:TextBox ID="txtReleaseDate" runat="server"
                         CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="col-xs-1">
+                <div class="col-xs-6">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
                         ErrorMessage="Release date is required" ControlToValidate="txtReleaseDate"
-                        Text="*" CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
+                        CssClass="text-danger" ValidationGroup="Add" Display="Dynamic"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ID="CompareValidator2" runat="server"
                         ErrorMessage="Enter a valid date" ControlToValidate="txtReleaseDate"
-                        Text="*" CssClass="text-danger" ValidationGroup="Add"
-                        Operator="DataTypeCheck" Type="Date"></asp:CompareValidator>
+                        CssClass="text-danger" ValidationGroup="Add"
+                        Operator="DataTypeCheck" Type="Date" Display="Dynamic"></asp:CompareValidator>
                 </div>
             </div>
             <div class="form-group">
@@ -158,9 +158,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-4">
-                    <asp:Label ID="lblAddError" runat="server" EnableViewState="false"></asp:Label>
-                    <asp:ValidationSummary ID="ValidationSummary2" runat="server"
-                         ValidationGroup="Add" CssClass="text-danger" HeaderText="Please correct the following errors:"/>
+                    <asp:Label ID="lblAddError" runat="server" EnableViewState="false" CssClass="text-danger"></asp:Label>
                 </div>
             </div>
         </div>
