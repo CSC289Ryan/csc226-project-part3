@@ -19,11 +19,11 @@
                         <asp:TemplateField HeaderText="Name" SortExpression="Name">
                             <EditItemTemplate>
                                 <div class="col-xs-11">
-                                    <asp:TextBox ID="txtName" runat="server" Text='<%# Bind("Name") %>'
+                                    <asp:TextBox ID="txtNameEdit" runat="server" Text='<%# Bind("Name") %>'
                                         CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                    ErrorMessage="Name is required" ControlToValidate="txtName"
+                                    ErrorMessage="Name is required" ControlToValidate="txtNameEdit"
                                     Text="*" CssClass="text-danger" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
@@ -34,11 +34,11 @@
                         <asp:TemplateField HeaderText="Version" SortExpression="Version">
                             <EditItemTemplate>
                                 <div class="col-xs-11">
-                                    <asp:TextBox ID="txtVersion" runat="server" Text='<%# Bind("Version") %>'
+                                    <asp:TextBox ID="txtVersionEdit" runat="server" Text='<%# Bind("Version") %>'
                                         CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                    ErrorMessage="Version is required" ControlToValidate="txtVersion"
+                                    ErrorMessage="Version is required" ControlToValidate="txtVersionEdit"
                                     Text="*" CssClass="text-danger" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
@@ -49,14 +49,14 @@
                         <asp:TemplateField HeaderText="Release Date" SortExpression="ReleaseDate">
                             <EditItemTemplate>
                                 <div class="col-xs-11">
-                                    <asp:TextBox ID="txtReleaseDate" runat="server" Text='<%# Bind("ReleaseDate", "{0:d}") %>'
+                                    <asp:TextBox ID="txtReleaseDateEdit" runat="server" Text='<%# Bind("ReleaseDate", "{0:d}") %>'
                                         CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-                                    ErrorMessage="Release Date is required" ControlToValidate="txtReleaseDate"
+                                    ErrorMessage="Release Date is required" ControlToValidate="txtReleaseDateEdit"
                                     Text="*" CssClass="text-danger" ValidationGroup="Edit"></asp:RequiredFieldValidator>
                                 <asp:CompareValidator ID="CompareValidator1" runat="server"
-                                    ErrorMessage="Enter a valid date" ControlToValidate="txtReleaseDate"
+                                    ErrorMessage="Enter a valid date" ControlToValidate="txtReleaseDateEdit"
                                     Text="*" CssClass="text-danger" ValidationGroup="Edit"
                                     Operator="DataTypeCheck" Type="Date"></asp:CompareValidator>
                             </EditItemTemplate>
@@ -93,6 +93,12 @@
                     <asp:TextBox ID="txtProductCode" runat="server"
                         CssClass="form-control"></asp:TextBox>
                 </div>
+                <div class="col-xs-1">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                        ErrorMessage="Product code is required" ControlToValidate="txtProductCode"
+                        Text="*" CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
+
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2">
@@ -102,6 +108,11 @@
                 <div class="col-sm-4">
                     <asp:TextBox ID="txtName" runat="server"
                         CssClass="form-control"></asp:TextBox>
+                </div>
+                <div class="col-xs-1">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                        ErrorMessage="Name is required" ControlToValidate="txtName"
+                        Text="*" CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="form-group">
@@ -113,6 +124,11 @@
                     <asp:TextBox ID="txtVersion" runat="server"
                         CssClass="form-control"></asp:TextBox>
                 </div>
+                <div class="col-xs-1">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+                        ErrorMessage="Version is required" ControlToValidate="txtVersion"
+                        Text="*" CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2">
@@ -123,21 +139,37 @@
                     <asp:TextBox ID="txtReleaseDate" runat="server"
                         CssClass="form-control"></asp:TextBox>
                 </div>
+                <div class="col-xs-1">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
+                        ErrorMessage="Release date is required" ControlToValidate="txtReleaseDate"
+                        Text="*" CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ID="CompareValidator2" runat="server"
+                        ErrorMessage="Enter a valid date" ControlToValidate="txtReleaseDate"
+                        Text="*" CssClass="text-danger" ValidationGroup="Add"
+                        Operator="DataTypeCheck" Type="Date"></asp:CompareValidator>
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-xs-12 col-sm-offset-2">
                     <asp:Button ID="btnAddProduct" runat="server" Text="Add Product"
-                        CssClass="col-sm-2 btn btn-primary" OnClick="btnAddProduct_Click"/>
+                        CssClass="col-sm-2 btn btn-primary" OnClick="btnAddProduct_Click"
+                        CausesValidation="true" ValidationGroup="Add"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-4">
                     <asp:Label ID="lblAddError" runat="server" EnableViewState="false"></asp:Label>
-                    <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
+                    <asp:ValidationSummary ID="ValidationSummary2" runat="server"
+                         ValidationGroup="Add" CssClass="text-danger" HeaderText="Please correct the following errors:"/>
                 </div>
             </div>
         </div>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' DeleteCommand="DELETE FROM [Products] WHERE [ProductCode] = @original_ProductCode AND [Name] = @original_Name AND [Version] = @original_Version AND [ReleaseDate] = @original_ReleaseDate" InsertCommand="INSERT INTO [Products] ([ProductCode], [Name], [Version], [ReleaseDate]) VALUES (@ProductCode, @Name, @Version, @ReleaseDate)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Products] ORDER BY [ProductCode]" UpdateCommand="UPDATE [Products] SET [Name] = @Name, [Version] = @Version, [ReleaseDate] = @ReleaseDate WHERE [ProductCode] = @original_ProductCode AND [Name] = @original_Name AND [Version] = @original_Version AND [ReleaseDate] = @original_ReleaseDate">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                    ConflictDetection="CompareAllValues" ConnectionString='<%$ ConnectionStrings:ConnectionString %>'
+                    DeleteCommand="DELETE FROM [Products] WHERE [ProductCode] = @original_ProductCode AND [Name] = @original_Name AND [Version] = @original_Version AND [ReleaseDate] = @original_ReleaseDate"
+                    InsertCommand="INSERT INTO [Products] ([ProductCode], [Name], [Version], [ReleaseDate]) VALUES (@ProductCode, @Name, @Version, @ReleaseDate)" OldValuesParameterFormatString="original_{0}"
+                    SelectCommand="SELECT * FROM [Products] ORDER BY [ProductCode]"
+                    UpdateCommand="UPDATE [Products] SET [Name] = @Name, [Version] = @Version, [ReleaseDate] = @ReleaseDate WHERE [ProductCode] = @original_ProductCode AND [Name] = @original_Name AND [Version] = @original_Version AND [ReleaseDate] = @original_ReleaseDate">
                     <DeleteParameters>
                         <asp:Parameter Name="original_ProductCode" Type="String"></asp:Parameter>
                         <asp:Parameter Name="original_Name" Type="String"></asp:Parameter>
