@@ -3,33 +3,140 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainPlaceholder" runat="server">
     <div class="container">
-        <div class="form-group">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductCode" DataSourceID="SqlDataSource1">
-                <Columns>
-                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True"></asp:CommandField>
-                    <asp:BoundField DataField="ProductCode" HeaderText="ProductCode" ReadOnly="True" SortExpression="ProductCode"></asp:BoundField>
-                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name"></asp:BoundField>
-                    <asp:BoundField DataField="Version" HeaderText="Version" SortExpression="Version"></asp:BoundField>
-                    <asp:BoundField DataField="ReleaseDate" HeaderText="ReleaseDate" SortExpression="ReleaseDate"></asp:BoundField>
-                </Columns>
-            </asp:GridView>
-            <asp:Label ID="lblUpdateDeleteError" runat="server" Text="ERROR" EnableViewState="false"></asp:Label>
-            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
+                    DataKeyNames="ProductCode" DataSourceID="SqlDataSource1"
+                    CssClass="table table-bordered table-condensed table-hover"
+                     OnPreRender="GridView1_PreRender"
+                     OnRowDeleted="GridView1_RowDeleted"
+                     OnRowUpdated="GridView1_RowUpdated">
+                    <HeaderStyle BackColor="Black" Font-Bold="true" ForeColor="White"/>
+                    <Columns>
+                        <asp:BoundField DataField="ProductCode" HeaderText="Product Code" ReadOnly="True" SortExpression="ProductCode">
+                            <ItemStyle CssClass="col-xs-2" />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="Name" SortExpression="Name">
+                            <EditItemTemplate>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtName" runat="server" Text='<%# Bind("Name") %>'
+                                        CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                    ErrorMessage="Name is required" ControlToValidate="txtName"
+                                    Text="*" CssClass="text-danger" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle CssClass="col-xs-4" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Version" SortExpression="Version">
+                            <EditItemTemplate>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtVersion" runat="server" Text='<%# Bind("Version") %>'
+                                        CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                    ErrorMessage="Version is required" ControlToValidate="txtVersion"
+                                    Text="*" CssClass="text-danger" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Version") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle CssClass="col-xs-2" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Release Date" SortExpression="ReleaseDate">
+                            <EditItemTemplate>
+                                <div class="col-xs-11">
+                                    <asp:TextBox ID="txtReleaseDate" runat="server" Text='<%# Bind("ReleaseDate", "{0:d}") %>'
+                                        CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                    ErrorMessage="Release Date is required" ControlToValidate="txtReleaseDate"
+                                    Text="*" CssClass="text-danger" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="CompareValidator1" runat="server"
+                                    ErrorMessage="Enter a valid date" ControlToValidate="txtReleaseDate"
+                                    Text="*" CssClass="text-danger" ValidationGroup="Edit"
+                                    Operator="DataTypeCheck" Type="Date"></asp:CompareValidator>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("ReleaseDate", "{0:d}") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle CssClass="col-xs-2" />
+                        </asp:TemplateField>
+                        <asp:CommandField CausesValidation="true" ShowEditButton="True" ValidationGroup="Edit">
+                            <ItemStyle CssClass="col-xs-1" />
+                        </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True">
+                            <ItemStyle CssClass="col-xs-1" />
+                        </asp:CommandField>
+                    </Columns>
+                </asp:GridView>
+                <asp:Label ID="lblUpdateDeleteError" runat="server" EnableViewState="false"></asp:Label>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+                    ValidationGroup="Edit" CssClass="text-danger" HeaderText="Please correct the following errors:"/>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <asp:Label ID="Label5" runat="server"
+                        Text="To add a new product, enter the product information and click Add Product"
+                        CssClass="control-label"></asp:Label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <asp:Label ID="Label1" runat="server" Text="Product Code:"
+                        CssClass="control-label"></asp:Label>
+                </div>
+                <div class="col-sm-4">
+                    <asp:TextBox ID="txtProductCode" runat="server"
+                        CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <asp:Label ID="Label2" runat="server" Text="Name:"
+                        CssClass="control-label"></asp:Label>
+                </div>
+                <div class="col-sm-4">
+                    <asp:TextBox ID="txtName" runat="server"
+                        CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <asp:Label ID="Label3" runat="server" Text="Version:"
+                        CssClass="control-label"></asp:Label>
+                </div>
+                <div class="col-sm-4">
+                    <asp:TextBox ID="txtVersion" runat="server"
+                        CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <asp:Label ID="Label4" runat="server" Text="Release Date:"
+                        CssClass="control-label"></asp:Label>
+                </div>
+                <div class="col-sm-4">
+                    <asp:TextBox ID="txtReleaseDate" runat="server"
+                        CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-offset-2">
+                    <asp:Button ID="btnAddProduct" runat="server" Text="Add Product"
+                        CssClass="col-sm-2 btn btn-primary" OnClick="btnAddProduct_Click"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <asp:Label ID="lblAddError" runat="server" EnableViewState="false"></asp:Label>
+                    <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="Button" />
-            <asp:Label ID="lblAddError" runat="server" Text="ERROR2" EnableViewState="false"></asp:Label>
-            <asp:ValidationSummary ID="ValidationSummary2" runat="server" />
-            <div class="col-xs-12 col-sm-offset-1 col-sm-10">
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' DeleteCommand="DELETE FROM [Products] WHERE [ProductCode] = @original_ProductCode AND [Name] = @original_Name AND [Version] = @original_Version AND [ReleaseDate] = @original_ReleaseDate" InsertCommand="INSERT INTO [Products] ([ProductCode], [Name], [Version], [ReleaseDate]) VALUES (@ProductCode, @Name, @Version, @ReleaseDate)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Products] ORDER BY [ProductCode]" UpdateCommand="UPDATE [Products] SET [Name] = @Name, [Version] = @Version, [ReleaseDate] = @ReleaseDate WHERE [ProductCode] = @original_ProductCode AND [Name] = @original_Name AND [Version] = @original_Version AND [ReleaseDate] = @original_ReleaseDate">
                     <DeleteParameters>
                         <asp:Parameter Name="original_ProductCode" Type="String"></asp:Parameter>
@@ -52,8 +159,6 @@
                         <asp:Parameter Name="original_Version" Type="Decimal"></asp:Parameter>
                         <asp:Parameter Name="original_ReleaseDate" Type="DateTime"></asp:Parameter>
                     </UpdateParameters>
-                </asp:SqlDataSource>
-            </div>
-        </div>
+                </asp:SqlDataSource>      
     </div>
 </asp:Content>

@@ -10,5 +10,21 @@ namespace SportsPro.Administration {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+        protected void GridView1_PreRender(object sender, EventArgs e) {
+
+        }
+
+        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e) {
+
+        }
+
+        protected void GridView1_RowUpdated(object sender, GridViewUpdatedEventArgs e) {
+
+        }
+
+        protected void btnAddProduct_Click(object sender, EventArgs e) {
+
+        }
     }
 }
