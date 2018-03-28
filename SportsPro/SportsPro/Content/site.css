@@ -24,3 +24,8 @@ label {
 input[type=checkbox], input[type=radio] {
     margin: 0 0.5em 0 2em;
 }
+
+
+.pagerStyle a, .pagerStyle span {
+    margin-left: 1em;
+}
