@@ -39,13 +39,13 @@ namespace SportsPro.Administration {
                 parameters["ProductCode"].DefaultValue = txtProductCode.Text;
                 parameters["Name"].DefaultValue = txtName.Text;
                 parameters["Version"].DefaultValue = txtVersion.Text;
-                parameters["ReleaseDate"].DefaultValue = DateTime.Parse(txtReleaseDate.Text).ToShortDateString();;
+                parameters["ReleaseDate"].DefaultValue = txtReleaseDate.Text;
                 try {
                     SqlDataSource1.Insert();
                     txtProductCode.Text = "";
                     txtName.Text = "";
                     txtVersion.Text = "";
-                    txtReleaseDate.Text = "";
+                    txtReleaseDate.Text = "mm/dd/yy";
                 } catch (Exception ex) {
                     lblAddError.Text = DatabaseErrorMessage(ex.Message);
                 }

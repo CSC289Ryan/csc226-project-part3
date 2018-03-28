@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Project 2-C: Site Navigation" Language="C#" MasterPageFile="~/SportsMaster.Master" AutoEventWireup="true" CodeBehind="ProductMaintenance.aspx.cs" Inherits="SportsPro.Administration.ProductMaintenance" %>
+﻿<%@ Page Title="3-B: Maintain Products" Language="C#" MasterPageFile="~/SportsMaster.Master" AutoEventWireup="true" CodeBehind="ProductMaintenance.aspx.cs" Inherits="SportsPro.Administration.ProductMaintenance" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headPlaceholder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainPlaceholder" runat="server">
@@ -39,7 +39,12 @@
                                 </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
                                     ErrorMessage="Version is required" ControlToValidate="txtVersionEdit"
-                                    Text="*" CssClass="text-danger" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                                    Text="*" CssClass="text-danger" ValidationGroup="Edit"
+                                    Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="cmpVersionEdit" runat="server"
+                                    ErrorMessage="Version must be a decimal value" ControlToValidate="txtVersionEdit"
+                                    CssClass="text-danger" ValidationGroup="Edit" Text="*"
+                                     Operator="DataTypeCheck" Type="Double"></asp:CompareValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("Version") %>'></asp:Label>
@@ -54,9 +59,10 @@
                                 </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                     ErrorMessage="Release Date is required" ControlToValidate="txtReleaseDateEdit"
-                                    Text="*" CssClass="text-danger" ValidationGroup="Edit"></asp:RequiredFieldValidator>
+                                    Text="*" CssClass="text-danger" ValidationGroup="Edit"
+                                    Display="Dynamic"></asp:RequiredFieldValidator>
                                 <asp:CompareValidator ID="CompareValidator1" runat="server"
-                                    ErrorMessage="Enter a valid date" ControlToValidate="txtReleaseDateEdit"
+                                    ErrorMessage="Enter a valid release date" ControlToValidate="txtReleaseDateEdit"
                                     Text="*" CssClass="text-danger" ValidationGroup="Edit"
                                     Operator="DataTypeCheck" Type="Date"></asp:CompareValidator>
                             </EditItemTemplate>
@@ -127,7 +133,11 @@
                 <div class="col-xs-6">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
                         ErrorMessage="Version is required" ControlToValidate="txtVersion"
-                        CssClass="text-danger" ValidationGroup="Add"></asp:RequiredFieldValidator>
+                        CssClass="text-danger" ValidationGroup="Add" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ID="CompareValidator3" runat="server"
+                        ErrorMessage="Enter a decimal value" ControlToValidate="txtVersion"
+                        CssClass="text-danger" ValidationGroup="Add"
+                         Operator="DataTypeCheck" Type="Double"></asp:CompareValidator>
                 </div>
             </div>
             <div class="form-group">
@@ -137,7 +147,7 @@
                 </div>
                 <div class="col-sm-4">
                     <asp:TextBox ID="txtReleaseDate" runat="server"
-                        CssClass="form-control"></asp:TextBox>
+                        CssClass="form-control">mm/dd/yy</asp:TextBox>
                 </div>
                 <div class="col-xs-6">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server"
