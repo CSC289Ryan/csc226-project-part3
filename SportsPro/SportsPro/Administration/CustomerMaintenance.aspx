@@ -1,4 +1,4 @@
-﻿<%@ Page Title="3-A: Maintain Customers" Language="C#" MasterPageFile="~/SportsMaster.Master" AutoEventWireup="true" CodeBehind="CustomerMaintenance.aspx.cs" Inherits="SportsPro.Administration.CustomerMaintenance" %>
+﻿<%@ Page Title="3-C: Maintain Customers" Language="C#" MasterPageFile="~/SportsMaster.Master" AutoEventWireup="true" CodeBehind="CustomerMaintenance.aspx.cs" Inherits="SportsPro.Administration.CustomerMaintenance" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="headPlaceholder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainPlaceholder" runat="server">
@@ -35,19 +35,34 @@
                 <HeaderStyle BackColor="Black" Font-Bold="true" ForeColor="White"/>
                 <Fields>
                     <asp:BoundField DataField="CustomerID" HeaderText="CustomerID" ReadOnly="True" InsertVisible="False" SortExpression="CustomerID"></asp:BoundField>
-                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name"></asp:BoundField>
-                    <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address"></asp:BoundField>
-                    <asp:BoundField DataField="City" HeaderText="City" SortExpression="City"></asp:BoundField>
-                    <asp:BoundField DataField="State" HeaderText="State" SortExpression="State"></asp:BoundField>
-                    <asp:BoundField DataField="ZipCode" HeaderText="ZipCode" SortExpression="ZipCode"></asp:BoundField>
-                    <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone"></asp:BoundField>
-                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email"></asp:BoundField>
+                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name">
+                        <ControlStyle CssClass="form-control" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address">
+                        <ControlStyle CssClass="form-control" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="City" HeaderText="City" SortExpression="City">
+                        <ControlStyle CssClass="form-control" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="State" HeaderText="State" SortExpression="State">
+                        <ControlStyle CssClass="form-control" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="ZipCode" HeaderText="ZipCode" SortExpression="ZipCode">
+                        <ControlStyle CssClass="form-control" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone">
+                        <ControlStyle CssClass="form-control" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email">
+                        <ControlStyle CssClass="form-control" />
+                    </asp:BoundField>
                     <asp:CommandField ShowInsertButton="True" ShowEditButton="True" ShowDeleteButton="True"></asp:CommandField>
                 </Fields>
+                <CommandRowStyle BackColor="Black" Font-Bold="true" ForeColor="White"/>
             </asp:DetailsView>
         </div>
         <div class="col-xs-12">
-            <asp:Label ID="lblErrorMsg" runat="server" EnableViewState="false"></asp:Label>
+            <asp:Label ID="lblErrorMsg" runat="server" EnableViewState="false" CssClass="text-danger"></asp:Label>
         </div>
     </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
