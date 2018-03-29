@@ -13,20 +13,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-offset-1 col-sm-6">
+            <div class="col-xs-12 col-sm-offset-1 col-sm-8">
                 <asp:FormView ID="FormView1" runat="server" DataKeyNames="TechID" DataSourceID="SqlDataSource2"
-                    HeaderText="Selected Technician" CssClass="table table-responsive">
+                    HeaderText="Selected Technician" CssClass="table table-responsive"
+                    OnItemUpdated="FormView1_ItemUpdated"
+                    OnItemDeleted="FormView1_ItemDeleted"
+                    OnItemInserted="FormView1_ItemInserted">
                     <HeaderStyle BackColor="Black" Font-Bold="true" ForeColor="White"/>
                     <EditItemTemplate>
                         <div class="form-group">
                             <asp:Label ID="Label6" runat="server" Text="TechID:" CssClass="col-xs-12 col-sm-2"></asp:Label>
-                            <div class="col-sm-9">
+                            <div class="col-xs-9">
                                 <asp:Label Text='<%# Eval("TechID") %>' runat="server" ID="TechIDLabel1" />
                             </div>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label7" runat="server" Text="Name:" CssClass="col-xs-12 col-sm-2"></asp:Label>
-                            <div class="col-sm-9">
+                            <div class="col-xs-9">
                                 <asp:TextBox Text='<%# Bind("Name") %>' runat="server" ID="NameTextBox" CssClass="form-control"/>
                             </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
@@ -35,7 +38,7 @@
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label8" runat="server" Text="Email:" CssClass="col-xs-12 col-sm-2"></asp:Label>
-                            <div class="col-sm-9">
+                            <div class="col-xs-9">
                                 <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" CssClass="form-control"/>
                             </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
@@ -47,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label9" runat="server" Text="Phone:" CssClass="col-xs-12 col-sm-2"></asp:Label>
-                            <div class="col-sm-9">
+                            <div class="col-xs-9">
                                 <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" CssClass="form-control"/>
                             </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
@@ -66,7 +69,7 @@
                     <InsertItemTemplate>
                         <div class="form-group">
                             <asp:Label ID="Label10" runat="server" Text="Name:" CssClass="col-xs-12 col-sm-2"></asp:Label>
-                            <div class="col-sm-9">
+                            <div class="col-xs-9">
                                 <asp:TextBox Text='<%# Bind("Name") %>' runat="server" ID="NameTextBox" CssClass="form-control"/>
                             </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
@@ -75,7 +78,7 @@
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label11" runat="server" Text="Email:" CssClass="col-xs-12 col-sm-2"></asp:Label>
-                            <div class="col-sm-9">
+                            <div class="col-xs-9">
                                 <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" CssClass="form-control"/>
                             </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
@@ -87,7 +90,7 @@
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label12" runat="server" Text="Phone:" CssClass="col-xs-12 col-sm-2"></asp:Label>
-                            <div class="col-sm-9">
+                            <div class="col-xs-9">
                                 <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" CssClass="form-control"/>
                             </div>
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
@@ -162,7 +165,7 @@
                     </UpdateParameters>
                 </asp:SqlDataSource>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-3">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server"
                     HeaderText="Please fix the errors below:" CssClass="text-danger"/>
             </div>
