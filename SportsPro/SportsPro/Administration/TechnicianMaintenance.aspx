@@ -29,18 +29,33 @@
                             <div class="col-sm-9">
                                 <asp:TextBox Text='<%# Bind("Name") %>' runat="server" ID="NameTextBox" CssClass="form-control"/>
                             </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                    ControlToValidate="NameTextBox" Display="Dynamic"
+                                    ErrorMessage="Name is required" Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label8" runat="server" Text="Email:" CssClass="col-xs-12 col-sm-2"></asp:Label>
                             <div class="col-sm-9">
                                 <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" CssClass="form-control"/>
                             </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                    ControlToValidate="EmailTextBox" Display="Dynamic"
+                                    ErrorMessage="Email is required" Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                                    ControlToValidate="EmailTextBox" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                    ErrorMessage="Enter a valid email address" Text="*" CssClass="text-danger"></asp:RegularExpressionValidator>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label9" runat="server" Text="Phone:" CssClass="col-xs-12 col-sm-2"></asp:Label>
                             <div class="col-sm-9">
                                 <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" CssClass="form-control"/>
                             </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                    ControlToValidate="PhoneTextBox" Display="Dynamic"
+                                    ErrorMessage="Phone is required" Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                    ControlToValidate="PhoneTextBox" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}"
+                                    ErrorMessage="Phone format: (999) 999-9999" Text="*" CssClass="text-danger"></asp:RegularExpressionValidator>
                         </div>
                         <div>
                             <asp:LinkButton runat="server" Text="Update" CommandName="Update" ID="UpdateButton"
@@ -54,18 +69,33 @@
                             <div class="col-sm-9">
                                 <asp:TextBox Text='<%# Bind("Name") %>' runat="server" ID="NameTextBox" CssClass="form-control"/>
                             </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                    ControlToValidate="NameTextBox" Display="Dynamic"
+                                    ErrorMessage="Name is required" Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label11" runat="server" Text="Email:" CssClass="col-xs-12 col-sm-2"></asp:Label>
                             <div class="col-sm-9">
                                 <asp:TextBox Text='<%# Bind("Email") %>' runat="server" ID="EmailTextBox" CssClass="form-control"/>
                             </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                    ControlToValidate="EmailTextBox" Display="Dynamic"
+                                    ErrorMessage="Email is required" Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server"
+                                    ControlToValidate="EmailTextBox" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                    ErrorMessage="Enter a valid email address" Text="*" CssClass="text-danger"></asp:RegularExpressionValidator>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="Label12" runat="server" Text="Phone:" CssClass="col-xs-12 col-sm-2"></asp:Label>
                             <div class="col-sm-9">
                                 <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" CssClass="form-control"/>
                             </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server"
+                                    ControlToValidate="PhoneTextBox" Display="Dynamic"
+                                    ErrorMessage="Phone is required" Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server"
+                                    ControlToValidate="PhoneTextBox" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}"
+                                    ErrorMessage="Phone format: (999) 999-9999" Text="*" CssClass="text-danger"></asp:RegularExpressionValidator>
                         </div>
                         <div>
                             <asp:LinkButton runat="server" Text="Insert" CommandName="Insert" ID="InsertButton" CausesValidation="True" />
@@ -134,7 +164,7 @@
             </div>
             <div class="col-sm-5">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server"
-                    HeaderText="Please fix the errors below:"/>
+                    HeaderText="Please fix the errors below:" CssClass="text-danger"/>
             </div>
         </div>
     </div>
