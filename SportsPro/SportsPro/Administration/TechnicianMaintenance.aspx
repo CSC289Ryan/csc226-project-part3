@@ -129,7 +129,7 @@
                         </div>
                     </ItemTemplate>
                 </asp:FormView>
-                <asp:Label ID="lblErrorMsg" runat="server" EnableViewState="false" CssClass="col-xs-12"></asp:Label>
+                <asp:Label ID="lblErrorMsg" runat="server" EnableViewState="false" CssClass="col-xs-12 text-danger"></asp:Label>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                     ConnectionString='<%$ ConnectionStrings:ConnectionString %>'
                     SelectCommand="SELECT [TechID], [Name] FROM [Technicians] ORDER BY [Name]"></asp:SqlDataSource>
