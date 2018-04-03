@@ -12,7 +12,7 @@ namespace SportsPro.Models {
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static IEnumerable GetOpenTechIncidents(int techID) {
             SqlConnection conn = new SqlConnection(TechSupportDB.GetConnectionString());
-            string select = "Select I.DateOpened As 'Date Opened', I.ProductCode As Product, C.Name As Customer " + 
+            string select = "Select I.DateOpened, I.ProductCode, C.Name " + 
                 "From Incidents I "+ 
                 "Left Join Customers C On I.CustomerID = C.CustomerID " + 
                 "Where TechID = @TechID And DateClosed Is Null " +

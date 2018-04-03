@@ -12,7 +12,7 @@ namespace SportsPro.Administration {
         }
 
         protected void GridView1_PreRender(object sender, EventArgs e) {
-
+            GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
     }
 }
