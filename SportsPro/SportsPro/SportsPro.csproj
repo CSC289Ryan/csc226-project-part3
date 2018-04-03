@@ -252,7 +252,9 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerList.cs" />
     <Compile Include="Models\Incident.cs" />
+    <Compile Include="Models\IncidentDB.cs" />
     <Compile Include="Models\Survey.cs" />
+    <Compile Include="Models\TechnicianDB.cs" />
     <Compile Include="ProductRegistration.aspx.cs">
       <DependentUpon>ProductRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
