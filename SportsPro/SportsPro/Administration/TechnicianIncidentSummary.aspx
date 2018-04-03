@@ -17,12 +17,18 @@
                     TypeName="SportsPro.Models.TechnicianDB"></asp:ObjectDataSource>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-12">
             <div class="table-responsive">
                 <asp:GridView ID="GridView1" runat="server"
                     CssClass="table table-bordered table-condensed table-striped"
-                    OnPreRender="GridView1_PreRender"></asp:GridView>
-
+                    OnPreRender="GridView1_PreRender" DataSourceID="ObjectDataSource2">
+                </asp:GridView>
+                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetOpenTechIncidents" TypeName="SportsPro.Models.IncidentDB">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="DropDownList1"
+                            PropertyName="SelectedValue" Name="techID" Type="Int32"></asp:ControlParameter>
+                    </SelectParameters>
+                </asp:ObjectDataSource>
             </div>
         </div>
     </div>
