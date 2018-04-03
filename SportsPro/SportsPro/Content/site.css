@@ -29,3 +29,23 @@ input[type=checkbox], input[type=radio] {
 .pagerStyle a, .pagerStyle span {
     margin-left: 1em;
 }
+
+.listViewHdrFtr {
+    background-color:black;
+    color:white;
+    font-weight:bold;
+}
+
+.listViewPagerLinks {
+    margin-left: 1em;
+    color:white;
+    font-weight:bold;
+}
+
+.listViewAltItem {
+    background-color:gainsboro; padding:1em;
+}
+
+.listViewItem {
+    background-color:white; padding:1em;
+}
