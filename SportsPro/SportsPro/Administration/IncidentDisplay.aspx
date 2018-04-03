@@ -5,7 +5,7 @@
     <div class="container">
         <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
             <AlternatingItemTemplate>
-                <div class="col-xs-12" style="background-color:lightgray;">
+                <div class="col-xs-12 listViewAltItem">
                     <div class="row">
                         <div class="col-xs-4">
                             <asp:Label ID="ProductNameLabel" runat="server" Text='<%# Eval("ProductName") %>' />
@@ -19,8 +19,8 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-4 text-right">
-                            DateOpened:<br />
-                            DateClosed:<br />
+                            Date Opened:<br />
+                            Date Closed:<br />
                             Title:<br />
                             Description:
                         </div>
@@ -36,28 +36,8 @@
             <EmptyDataTemplate>
                 <span>No data was returned.</span>
             </EmptyDataTemplate>
-            <InsertItemTemplate>
-                <span style="">DateOpened:
-                <asp:TextBox ID="DateOpenedTextBox" runat="server" Text='<%# Bind("DateOpened") %>' />
-                <br />DateClosed:
-                <asp:TextBox ID="DateClosedTextBox" runat="server" Text='<%# Bind("DateClosed") %>' />
-                <br />Title:
-                <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
-                <br />Description:
-                <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
-                <br />ProductName:
-                <asp:TextBox ID="ProductNameTextBox" runat="server" Text='<%# Bind("ProductName") %>' />
-                <br />CustomerName:
-                <asp:TextBox ID="CustomerNameTextBox" runat="server" Text='<%# Bind("CustomerName") %>' />
-                <br />TechName:
-                <asp:TextBox ID="TechNameTextBox" runat="server" Text='<%# Bind("TechName") %>' />
-                <br />
-                <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                <br /><br /></span>
-            </InsertItemTemplate>
             <ItemTemplate>
-                <div class="col-xs-12" style="background-color:white;">
+                <div class="col-xs-12 listViewItem">
                     <div class="row">
                         <div class="col-xs-4">
                             <asp:Label ID="ProductNameLabel" runat="server" Text='<%# Eval("ProductName") %>' />
@@ -71,8 +51,8 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-4 text-right">
-                            DateOpened:<br />
-                            DateClosed:<br />
+                            Date Opened:<br />
+                            Date Closed:<br />
                             Title:<br />
                             Description:
                         </div>
@@ -87,7 +67,7 @@
             </ItemTemplate>
             <LayoutTemplate>
                 <div id="itemPlaceholderContainer" runat="server" style="">
-                    <div class="col-xs-12" style="background-color:black; color:white; font-weight:bold;">
+                    <div class="col-xs-12 listViewHdrFtr">
                         <div class="col-xs-4">
                             <asp:Label ID="Label1" runat="server" Text="Product"></asp:Label>
                         </div>
@@ -100,10 +80,10 @@
                     </div>
                     <span runat="server" id="itemPlaceholder" />
                 </div>
-                <div class="text-center" style="background-color:black; color:white; font-weight:bold;">
+                <div class="text-center listViewHdrFtr">
                     <asp:DataPager ID="DataPager1" runat="server" PageSize="4">
                         <Fields>
-                            <asp:NextPreviousPagerField ButtonType="Link"
+                            <asp:NextPreviousPagerField ButtonType="Link" ButtonCssClass="listViewPagerLinks"
                                 ShowFirstPageButton="False"
                                 ShowLastPageButton="False"/>
                         </Fields>
